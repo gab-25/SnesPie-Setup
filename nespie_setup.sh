@@ -16,8 +16,16 @@ echo "Installing dependencies..."
 apt-get update
 apt-get install -y git lsb-release
 
-RPS_HOME="$HOME/RetroPie-Setup"
+# if no user is specified
+if [[ -z "$__user" ]]; then
+    # get the calling user from sudo env
+    __user="$SUDO_USER"
+fi
+
+USER_HOME=$(getent passwd "$__user" | cut -d: -f6)
+RPS_HOME="$USER_HOME/RetroPie-Setup"
 REPO_URL="https://github.com/RetroPie/RetroPie-Setup.git"
+scriptdir="$RPS_HOME"
 
 # Clone RetroPie Setup
 if [ ! -d "$RPS_HOME" ]; then
@@ -31,12 +39,6 @@ fi
 
 # main retropie install location
 rootdir="/opt/retropie"
-
-# if no user is specified
-if [[ -z "$__user" ]]; then
-    # get the calling user from sudo env
-    __user="$SUDO_USER"
-fi
 
 if [[ -z "$__group" ]]; then
     __group="$(id -gn "$__user")"
@@ -68,6 +70,7 @@ core_packages=$(rp_getSectionIds core)
 
 # install each core package
 echo "Installing core packages..."
+__default_binary=1
 for package in $core_packages; do
     echo "Installing $package..."
     rp_installModule "$package"

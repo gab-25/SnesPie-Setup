@@ -21,7 +21,7 @@ It strips away the bloat and installs only the essentials:
 
 3. Run the setup script:
    ```bash
-   ./nespie_setup.sh
+   sudo ./nespie_setup.sh
    ```
 
 ## What it does
