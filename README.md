@@ -31,7 +31,7 @@ The `snespie_setup.sh` script performs the following steps automatically:
 - Installs necessary system dependencies (`git`, `lsb-release`).
 - Clones the official `RetroPie-Setup` repository.
 - Installs the RetroPie "Core" packages (required for EmulationStation and basic functionality).
-- Installs **only** the `lr-snes9x` NES emulator.
+- Installs **only** the `lr-snes9x` SNES emulator.
 - Enables autostart to boot directly into EmulationStation.
 
 ## Usage

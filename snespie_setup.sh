@@ -12,7 +12,7 @@ if [[ "$(id -u)" -ne 0 ]]; then
     exit 1
 fi
 
-echo "Starting NesPie Setup..."
+echo "Starting SnesPie Setup..."
 
 # Install basic dependencies
 echo "Installing dependencies..."
